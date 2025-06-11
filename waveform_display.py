@@ -106,11 +106,15 @@ def plot_waveforms(case_ids=None, save_individual=False):
         
         plt.tight_layout()
         
-        # 保存图片
+        # 保存图片到统一输出文件夹
         if save_individual:
+            import os
+            output_dir = "output_results"
+            os.makedirs(output_dir, exist_ok=True)
             filename = f'waveform_case_{case_id}.png'
-            plt.savefig(filename, dpi=300, bbox_inches='tight')
-            print(f"已保存: {filename}")
+            filepath = os.path.join(output_dir, filename)
+            plt.savefig(filepath, dpi=300, bbox_inches='tight')
+            print(f"已保存: {filepath}")
         
         plt.show()
 
@@ -118,6 +122,6 @@ if __name__ == "__main__":
     print("生成波形可视化...")
     
     # 绘制几个代表性case的详细波形
-    plot_waveforms(case_ids=[0], save_individual=True)
+    plot_waveforms(case_ids=[8], save_individual=True)
     
     print("波形可视化完成！") 

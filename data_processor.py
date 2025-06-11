@@ -25,6 +25,7 @@ class CaseData:
         self.filtered_signal: Optional[np.ndarray] = None  # 滤波后的信号
         self.alpha_i: Optional[float] = None  # alpha_i = B_av/B_delta
         self.k_nm: Optional[float] = None  # K_Nm = 1/sqrt(2) * (B_delta1/B_av)
+        self.k_w: Optional[float] = None  # K_W = B_delta/B_delta1
         
     def calculate_ksat(self):
         """计算饱和系数 Ksat=1+(Hm_dr*23.6+Hm_ds*27)/(Hm_delta*0.4)"""
@@ -37,7 +38,7 @@ class CaseData:
             self.ksat = None
     
     def calculate_ratios(self):
-        """计算alpha_i和K_Nm比值"""
+        """计算alpha_i、K_Nm和K_W比值"""
         # 计算 alpha_i = B_av/B_delta
         if self.b_av is not None and self.b_delta is not None and self.b_delta != 0:
             self.alpha_i = self.b_av / self.b_delta
@@ -49,6 +50,12 @@ class CaseData:
             self.k_nm = (1 / np.sqrt(2)) * (self.b_delta1 / self.b_av)
         else:
             self.k_nm = None
+        
+        # 计算 K_W = B_delta/B_delta1
+        if self.b_delta is not None and self.b_delta1 is not None and self.b_delta1 != 0:
+            self.k_w = self.b_delta / self.b_delta1
+        else:
+            self.k_w = None
     
     def process_airgap_flux(self, harmonic_filter_n: int = 50):
         """
@@ -114,6 +121,7 @@ class CaseData:
             self.hm_delta = None
             self.alpha_i = None
             self.k_nm = None
+            self.k_w = None
     
     def __str__(self):
         flux_info = f"airgap_flux_rows={len(self.airgap_flux_data) if self.airgap_flux_data is not None else 0}"
@@ -249,20 +257,25 @@ class DataProcessor:
                 'b_delta1': case_data.b_delta1,
                 'b_delta': case_data.b_delta,
                 'alpha_i': case_data.alpha_i,
-                'k_nm': case_data.k_nm
+                'k_nm': case_data.k_nm,
+                'k_w': case_data.k_w
             })
         
         return pd.DataFrame(summary_data)
     
-    def save_to_csv(self, filename: str = "calculated_results.csv"):
+    def save_to_csv(self, filename: str = "calculated_results.csv", output_dir: str = "output_results"):
         """将所有数据保存为CSV文件"""
+        import os
+        os.makedirs(output_dir, exist_ok=True)
+        
         df = self.get_case_summary()
         # 按case_id排序
         df['case_id_num'] = df['case_id'].astype(int)
         df = df.sort_values('case_id_num').drop('case_id_num', axis=1)
         
-        df.to_csv(filename, index=False, encoding='utf-8-sig')
-        return filename
+        full_path = os.path.join(output_dir, filename)
+        df.to_csv(full_path, index=False, encoding='utf-8-sig')
+        return full_path
 
 
 if __name__ == "__main__":
