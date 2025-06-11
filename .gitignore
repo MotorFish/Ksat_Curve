@@ -1,0 +1,347 @@
+# ===================================================================
+# Python 电机设计分析项目 .gitignore
+# ===================================================================
+
+# ===== Python =====
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff
+instance/
+.webassets-cache
+
+# Scrapy stuff
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# poetry
+poetry.lock
+
+# pdm
+.pdm.toml
+
+# PEP 582
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# ===== 科学计算和数据分析 =====
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# NumPy/SciPy
+*.npy
+*.npz
+
+# Matplotlib
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+*.svg
+!**/example_*.png
+!**/sample_*.png
+
+# Pandas
+*.pkl
+*.pickle
+
+# HDF5
+*.h5
+*.hdf5
+
+# MATLAB
+*.mat
+
+# ===== 项目特定文件 =====
+# 输出结果目录（可选择性忽略）
+output_results/
+results/
+outputs/
+
+# 临时计算结果
+temp_results/
+tmp/
+temporary/
+
+# 大型数据文件
+*.csv
+!sample_*.csv
+!example_*.csv
+*.dat
+*.txt
+!README.txt
+!requirements.txt
+
+# 仿真输出文件
+output.txt
+*.out
+*.log
+
+# 配置文件（如果包含敏感信息）
+config.ini
+settings.ini
+local_config.py
+
+# ===== IDE 和编辑器 =====
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Atom
+.atom/
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ===== 操作系统 =====
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ===== 压缩文件 =====
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# ===== 电机设计相关 =====
+# 仿真文件
+*.fem
+*.ans
+*.anf
+*.odb
+*.cae
+*.sim
+
+# CAD文件（大型文件）
+*.dwg
+*.dxf
+*.step
+*.stp
+*.iges
+*.igs
+
+# 计算结果备份
+backup/
+bak/
+*.bak
+*.backup
+
+# ===== 文档和报告（可选） =====
+# LaTeX
+*.aux
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.toc
+*.lot
+*.lof
+
+# Microsoft Office
+~$*.docx
+~$*.xlsx
+~$*.pptx
+
+# ===== 网络和云 =====
+# FTP
+.ftpconfig
+
+# 云同步
+.dropbox
+.dropbox.attr
+.onedrive
+
+# ===== 自定义忽略（根据需要调整） =====
+# 特定案例数据（如果不想跟踪）
+# prmtric.1/case.*/
+# Ksat_curve/
+
+# 大型数据集
+# large_datasets/
+# experimental_data/
+
+# 个人笔记
+notes.txt
+todo.txt
+*.notes 
