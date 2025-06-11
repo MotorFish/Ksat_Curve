@@ -146,17 +146,6 @@ cython_debug/
 *.npy
 *.npz
 
-# Matplotlib
-*.png
-*.jpg
-*.jpeg
-*.gif
-*.bmp
-*.tiff
-*.svg
-!**/example_*.png
-!**/sample_*.png
-
 # Pandas
 *.pkl
 *.pickle
